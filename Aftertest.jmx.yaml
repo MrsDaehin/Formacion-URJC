@@ -1,0 +1,79 @@
+---
+execution:
+- concurrency: 1
+  hold-for: 60s
+  iterations: 1
+  ramp-up: 60s
+  scenario: Thread Group
+scenarios:
+  Thread Group:
+    default-address: /
+    headers:
+      Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+      Accept-Encoding: gzip, deflate
+      Accept-Language: es-ES,es;q=0.9,en;q=0.8
+      Upgrade-Insecure-Requests: '1'
+      User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36
+    requests:
+    - do:
+      - follow-redirects: true
+        headers:
+          Referer: http://blazedemo.com/
+        label: http://blazedemo.com/vacation.html
+        method: GET
+        think-time: 0ms
+        url: http://${BASE_URL_1}vacation.html
+      - follow-redirects: true
+        headers:
+          Referer: http://blazedemo.com/vacation.html
+        label: http://blazedemo.com/index.php
+        method: GET
+        think-time: 5476ms
+        url: http://${BASE_URL_1}index.php
+      - body:
+          fromPort: Philadelphia
+          toPort: London
+        follow-redirects: true
+        headers:
+          Content-Type: application/x-www-form-urlencoded
+          Origin: http://blazedemo.com
+          Referer: http://blazedemo.com/index.php
+        label: http://blazedemo.com/reserve.php
+        method: POST
+        think-time: 4575ms
+        url: http://${BASE_URL_1}reserve.php
+      - body:
+          fromPort: Philadelphia
+          toPort: London
+        follow-redirects: true
+        headers:
+          Content-Type: application/x-www-form-urlencoded
+          Origin: http://blazedemo.com
+          Referer: http://blazedemo.com/index.php
+        label: http://blazedemo.com/reserve.php
+        method: POST
+        think-time: 53ms
+        url: http://${BASE_URL_1}reserve.php
+      - body:
+          airline: Virgin America
+          flight: '43'
+          fromPort: Philadelphia
+          price: '472.56'
+          toPort: London
+        follow-redirects: true
+        headers:
+          Content-Type: application/x-www-form-urlencoded
+          Origin: http://blazedemo.com
+          Referer: http://blazedemo.com/reserve.php
+        label: http://blazedemo.com/purchase.php
+        method: POST
+        think-time: 1999ms
+        url: http://${BASE_URL_1}purchase.php
+      include-timers: false
+      transaction: Test
+    store-cache: true
+    store-cookie: true
+    use-dns-cache-mgr: true
+    variables:
+      BASE_URL_1: blazedemo.com
+

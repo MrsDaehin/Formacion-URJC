@@ -1,0 +1,16 @@
+execution:
+- scenario: dummy
+  hold-for: 1m
+
+scenarios:
+  dummy:
+    script: taurus-dummy.jmx
+  modifications:
+    disable: 
+     - Capacity
+    
+reporting:
+- module: passfail
+  criteria:
+  - "avg-rt>1500ms for 10s, continue as failed"
+  - "fail>50% for 10s, stop as failed"

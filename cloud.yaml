@@ -1,0 +1,8 @@
+modules:
+  cloud:
+    token: ea408ae28b8f26eefc48c595
+    timeout: 5
+    test: Aftertest
+  blazemeter:
+    token: ea408ae28b8f26eefc48c595
+    browser-open: none

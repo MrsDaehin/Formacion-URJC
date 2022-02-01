@@ -1,0 +1,11 @@
+modules:
+ cloud:
+  token: ea408ae28b8f26eefc48c595
+   timeout: 5
+   browser-open: start
+   check-interval: 5s
+   public-report: false
+   send-report-email: false
+  blazemeter:
+   token: ea408ae28b8f26eefc48c595
+   browser-open: none

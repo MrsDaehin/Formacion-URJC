@@ -1,0 +1,18 @@
+execution:
+- executor: selenium
+  iterations: 1
+  scenario: quick-selenium-test
+
+scenarios:
+  quick-selenium-test:
+    browser: Firefox
+    timeout: 10
+    think-time: 500ms
+    default-address: http://blazedemo.com/
+    requests:
+    - url: /
+      assert:
+      - contains:
+        - blazemeter
+        subject: body
+        regexp: false
