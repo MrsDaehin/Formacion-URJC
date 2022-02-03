@@ -1,0 +1,22 @@
+execution:
+- scenario:
+    script: TestURJC.jmx
+    concurrency: ${__P(my_conc,3)}
+    modifications:
+      disable:
+      - Capacity
+    ramp-up: 30
+    hold-for: 1m
+
+modules:
+  jmeter:
+    properties:
+      my_conc: 10
+      my_hold: 20
+
+
+reporting:
+- module: passfail
+  criteria:
+  - "avg-rt>1500ms for 10s, continue as failed"
+  - "fail>50% for 10s, stop as failed"
