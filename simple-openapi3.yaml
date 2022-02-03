@@ -5,7 +5,8 @@ info:
   description: A simple API to illustrate OpenAPI concepts
 
 servers:
-  - url: https://example.io/v1
+  - url: http://localhost:8080/
+    description: Example API Service
 
 components:
   securitySchemes:
